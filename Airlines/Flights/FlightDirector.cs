@@ -3,9 +3,9 @@ using NAlex.Airlines.Planes;
 
 namespace NAlex.Airlines.Flights
 {
-    public class FlightDirector
+    public static class FlightDirector
     {
-        public bool CanFly(Plane plane, FlightParams flightParams)
+        public static bool CanFly(IPlane plane, FlightParams flightParams)
         {
             bool result = flightParams.FlightRange <= plane.FlightRange;
 

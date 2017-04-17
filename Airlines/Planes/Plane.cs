@@ -7,7 +7,7 @@ using NAlex.Airlines.Interfaces;
 
 namespace NAlex.Airlines.Planes
 {
-    public abstract class Plane
+    public class Plane : IPlane
     {
         private double fuelCount;
         private int flightRange = 1;
@@ -66,7 +66,21 @@ namespace NAlex.Airlines.Planes
             Number = number;
         }
 
-        public abstract bool PrepareForFlight(IFlightPreparer preparer);        
-        public abstract bool Flight(FlightParams flightParams, out string flightResultMessage);
+//        public abstract bool PrepareForFlight(IFlightPreparer preparer);
+
+        public virtual bool Flight(FlightParams flightParams, out string flightResultMessage)
+        {
+            flightResultMessage = "Flight succeeded.";
+
+            double maximumRange = FuelCount * 100 / FuelConsumption;
+
+            if (maximumRange < flightParams.FlightRange)
+            {
+                flightResultMessage = "Not enough fuel.";
+                return false;
+            }
+
+            return true;
+        }
     }
 }
