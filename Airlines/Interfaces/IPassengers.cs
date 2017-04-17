@@ -8,5 +8,6 @@ namespace NAlex.Airlines.Interfaces
     public interface IPassengers
     {
         int PassengersCapacity { get; }
+        int PassengersOnBoard { get; }
     }
 }

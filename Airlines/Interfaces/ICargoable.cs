@@ -11,5 +11,9 @@ namespace NAlex.Airlines.Interfaces
         /// Cargo capacity, kg
         /// </summary>
         int CargoCapacity { get; }
+        /// <summary>
+        /// Current cargo load, kg
+        /// </summary>
+        int CargoLoad { get; }
     }
 }
