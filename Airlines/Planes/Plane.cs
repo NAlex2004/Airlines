@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NAlex.Airlines.Flights;
 using NAlex.Airlines.Interfaces;
 
 namespace NAlex.Airlines.Planes
@@ -50,7 +51,7 @@ namespace NAlex.Airlines.Planes
 
         public double FuelCount 
         {
-            get;
+            get { return fuelCount; }
             protected set
             {
                 fuelCount = Math.Min(Math.Max(0, value), FuelTankSize);
@@ -66,6 +67,6 @@ namespace NAlex.Airlines.Planes
         }
 
         public abstract bool PrepareForFlight(IFlightPreparer preparer);        
-        public abstract bool Flight(out string flightResultMessage);
+        public abstract bool Flight(FlightParams flightParams, out string flightResultMessage);
     }
 }

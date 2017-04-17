@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Flights\FlightDirector.cs" />
     <Compile Include="Flights\FlightParams.cs" />
     <Compile Include="Interfaces\IFlightPreparer.cs" />
     <Compile Include="Planes\Plane.cs" />

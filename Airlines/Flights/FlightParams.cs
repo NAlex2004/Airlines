@@ -7,8 +7,8 @@ namespace NAlex.Airlines.Flights
 {
     public struct FlightParams
     {
-        int FlightRange;
-        int PassgengersCount;
-        int Cargo;
+        public int FlightRange;
+        public int PassgengersCount;
+        public int CargoWeight;
     }
 }
