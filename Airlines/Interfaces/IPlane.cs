@@ -19,8 +19,9 @@ namespace NAlex.Airlines.Interfaces
         /// Fuel tank size, liters. Greater or equal 1.
         /// </summary>
         double FuelTankSize { get; }
-        double FuelCount { get; }
+        double FuelCount { get; set; }
 
-        bool Flight(FlightParams flightParams, out string flightResultMessage);
+        bool PrepareForFlight(IFlightPreparer preparer);
+        bool Flight();
     }
 }

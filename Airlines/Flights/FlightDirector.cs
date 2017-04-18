@@ -3,9 +3,16 @@ using NAlex.Airlines.Planes;
 
 namespace NAlex.Airlines.Flights
 {
-    public static class FlightDirector
+    public class FlightDirector: IFlightPreparer
     {
-        public static bool CanFly(IPlane plane, FlightParams flightParams)
+        private FlightParams flightParams;
+
+        public FlightDirector(FlightParams flightParams)
+        {
+            this.flightParams = flightParams;           
+        }
+
+        public bool CanFly(IPlane plane)
         {
             bool result = flightParams.FlightRange <= plane.FlightRange;
 
@@ -22,6 +29,27 @@ namespace NAlex.Airlines.Flights
             }
 
             return result;
+        }
+
+        public double GetFuel(IPlane plane)
+        {
+            return plane.FuelTankSize;
+        }
+
+        public int GetCargo()
+        {
+            return flightParams.CargoWeight;
+        }
+
+        public int GetPassengers()
+        {
+            return flightParams.PassgengersCount;
+        }
+
+
+        public int GetFlightRange()
+        {
+            return flightParams.FlightRange;
         }
     }
 }

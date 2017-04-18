@@ -13,6 +13,9 @@ namespace NAlex.Airlines.Planes
         private int flightRange = 1;
         private double fuelTankSize = 1;
 
+        protected bool preparedForFlight = false;
+        protected int missionFlightRange = 0;
+
         public int? Id { get; protected set; }
         public string Number { get; set; }
         public string Manufacture { get; protected set; }
@@ -52,7 +55,7 @@ namespace NAlex.Airlines.Planes
         public double FuelCount 
         {
             get { return fuelCount; }
-            protected set
+            set
             {
                 fuelCount = Math.Min(Math.Max(0, value), FuelTankSize);
             }
@@ -66,17 +69,32 @@ namespace NAlex.Airlines.Planes
             Number = number;
         }
 
-//        public abstract bool PrepareForFlight(IFlightPreparer preparer);
-
-        public virtual bool Flight(FlightParams flightParams, out string flightResultMessage)
+        public virtual bool PrepareForFlight(IFlightPreparer preparer)
         {
-            flightResultMessage = "Flight succeeded.";
+            preparedForFlight = preparer.CanFly(this);
+            if (preparedForFlight)
+            {
+                fuelCount = preparer.GetFuel(this);
+                missionFlightRange = preparer.GetFlightRange();
+            }
+            return preparedForFlight;
+        }
+
+        public virtual bool Flight()
+        {
+            if (!preparedForFlight)
+            {
+                Console.WriteLine("This plane is not prepared for flight!");
+                return false;
+            }
+
+            preparedForFlight = false;
 
             double maximumRange = FuelCount * 100 / FuelConsumption;
 
-            if (maximumRange < flightParams.FlightRange)
+            if (maximumRange < missionFlightRange)
             {
-                flightResultMessage = "Not enough fuel.";
+                Console.WriteLine("Not enough fuel.");
                 return false;
             }
 
