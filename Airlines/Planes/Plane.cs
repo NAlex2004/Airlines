@@ -55,7 +55,7 @@ namespace NAlex.Airlines.Planes
         public double FuelCount 
         {
             get { return fuelCount; }
-            set
+            protected set
             {
                 fuelCount = Math.Min(Math.Max(0, value), FuelTankSize);
             }
@@ -74,8 +74,13 @@ namespace NAlex.Airlines.Planes
             preparedForFlight = preparer.CanFly(this);
             if (preparedForFlight)
             {
-                fuelCount = preparer.GetFuel(this);
+                FuelCount = preparer.GetFuel(this);
                 missionFlightRange = preparer.GetFlightRange();
+            }
+            else
+            {
+                if (preparer.GetFlightRange() > FlightRange)
+                    Console.WriteLine("Maximum flight range is {0} km.", FlightRange);
             }
             return preparedForFlight;
         }

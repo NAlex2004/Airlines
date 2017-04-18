@@ -2,18 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{43D0C8AD-8573-4F08-A0AF-692F96F9B83F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5DF30498-9702-4FD4-9DEB-18B48A7F3762}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NAlex.Airlines</RootNamespace>
-    <AssemblyName>Airlines</AssemblyName>
+    <RootNamespace>AirlineDemo</RootNamespace>
+    <AssemblyName>AirlineDemo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,20 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Flights\FlightDirector.cs" />
-    <Compile Include="Flights\FlightParams.cs" />
-    <Compile Include="Interfaces\IFlightPreparer.cs" />
-    <Compile Include="Interfaces\IPlane.cs" />
-    <Compile Include="Planes\CargoPassengerPlane.cs" />
-    <Compile Include="Planes\CargoPlane.cs" />
-    <Compile Include="Planes\PassengerPlane.cs" />
-    <Compile Include="Planes\Plane.cs" />
-    <Compile Include="Interfaces\ICargoable.cs" />
-    <Compile Include="Interfaces\IPassengers.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Collections\" />
+    <ProjectReference Include="..\Airlines\Airlines.csproj">
+      <Project>{43D0C8AD-8573-4F08-A0AF-692F96F9B83F}</Project>
+      <Name>Airlines</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

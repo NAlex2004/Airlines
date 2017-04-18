@@ -16,13 +16,13 @@ namespace NAlex.Airlines.Flights
         {
             bool result = flightParams.FlightRange <= plane.FlightRange;
 
-            if (flightParams.CargoWeight > 0)
+            if (result && flightParams.CargoWeight > 0)
             {
                 ICargoable cargoable = plane as ICargoable;
                 result &= (cargoable != null && (cargoable.CargoCapacity >= flightParams.CargoWeight));
             }
 
-            if (flightParams.PassgengersCount > 0)
+            if (result && flightParams.PassgengersCount > 0)
             {
                 IPassengers passengers = plane as IPassengers;
                 result &= (passengers != null && (passengers.PassengersCapacity >= flightParams.PassgengersCount));
