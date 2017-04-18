@@ -40,8 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Airline.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Factories\AirlineFactory.cs" />
     <Compile Include="Flights\FlightDirector.cs" />
     <Compile Include="Flights\FlightParams.cs" />
+    <Compile Include="Interfaces\IAirline.cs" />
+    <Compile Include="Interfaces\IAirlineFactory.cs" />
     <Compile Include="Interfaces\IFlightPreparer.cs" />
     <Compile Include="Interfaces\IPlane.cs" />
     <Compile Include="Planes\CargoPassengerPlane.cs" />
@@ -52,9 +57,7 @@
     <Compile Include="Interfaces\IPassengers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Collections\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -14,12 +14,15 @@ namespace AirlineDemo
         {
             List<IPlane> planes = new List<IPlane>()
             {
-                new Plane(1000, 100, "Boeng"),
-                new CargoPlane(1000, 200, "Tupolev", 200),
-                new PassengerPlane(600, 150, "ChinaFly", 50),
-                new CargoPassengerPlane(1000, 300, "UFO", 110, 30)
+                new Plane(1000, 100, "Boeng")
+                , new CargoPlane(1000, 200, "Tupolev", 200)
+                , new PassengerPlane(600, 150, "ChinaFly", 50)
+                , new CargoPassengerPlane(1000, 300, "UFO", 110, 30)                
             };
-                        
+            
+
+            planes.Where(p => p.FuelConsumption < 30).ToList().ForEach(p => Console.WriteLine(p.FuelConsumption));
+
             FlightParams fParams = new FlightParams() { CargoWeight = 400, FlightRange = 10000, PassgengersCount = 300 };
 
             IFlightPreparer preparer = new FlightDirector(fParams);
@@ -31,7 +34,9 @@ namespace AirlineDemo
                 plane.Flight();
             }
 
-
+            ICollection<IPlane> col;
+            
+            
             Console.ReadKey();
         }
     }
