@@ -61,12 +61,12 @@ namespace NAlex.Airlines.Planes
             }
         }
 
-        public Plane(int flightRange, int fuelTankSize, string manufacture, string number)
+        public Plane(int flightRange, int fuelTankSize, string manufacture)
         {
             FlightRange = flightRange;
             FuelTankSize = fuelTankSize;
             Manufacture = manufacture;
-            Number = number;
+            Number = "";
         }
 
         public virtual bool PrepareForFlight(IFlightPreparer preparer)
