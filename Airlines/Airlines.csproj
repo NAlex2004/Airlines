@@ -44,6 +44,7 @@
     <Compile Include="Flights\FlightParams.cs" />
     <Compile Include="Interfaces\IFlightPreparer.cs" />
     <Compile Include="Interfaces\IPlane.cs" />
+    <Compile Include="Planes\CargoPassengerPlane.cs" />
     <Compile Include="Planes\CargoPlane.cs" />
     <Compile Include="Planes\PassengerPlane.cs" />
     <Compile Include="Planes\Plane.cs" />

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NAlex.Airlines.Flights;
 using NAlex.Airlines.Interfaces;
+using NAlex.Airlines.Flights;
 
 namespace NAlex.Airlines.Planes
 {
-    public class PassengerPlane: Plane, IPassengers
+    public class CargoPassengerPlane: CargoPlane, IPassengers
     {
         private int passengersCapacity;
         private int passengersOnBoard;
@@ -30,8 +30,8 @@ namespace NAlex.Airlines.Planes
             }
         }
 
-        public PassengerPlane(int flightRange, int fuelTankSize, string manufacture, int passengersCapasity)
-            : base(flightRange, fuelTankSize, manufacture)
+        public CargoPassengerPlane(int flightRange, int fuelTankSize, string manufacture, int cargoCapacity, int passengersCapasity)
+            : base(flightRange, fuelTankSize, manufacture, cargoCapacity)
         {
             PassengersCapacity = passengersCapasity;
         }
