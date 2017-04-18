@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NAlex.Airlines.Interfaces;
-using NAlex.Airlines.Planes;
+using System.IO;
 
-namespace NAlex.Airlines.Factories
+namespace AirlineDemo.Factories
 {
     public class AirlineFactory: IAirlineFactory
     {

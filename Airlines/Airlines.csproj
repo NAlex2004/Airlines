@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Collections\Airline.cs" />
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Factories\AirlineFactory.cs" />
     <Compile Include="Flights\FlightDirector.cs" />
     <Compile Include="Flights\FlightParams.cs" />
     <Compile Include="Interfaces\IAirline.cs" />
