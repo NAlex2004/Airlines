@@ -24,7 +24,7 @@ namespace NAlex.Airlines.Planes
         public int CargoLoad
         {
             get { return cargoLoad; }
-            protected set
+            set
             {
                 cargoLoad = Math.Min(Math.Max(0, value), cargoCapacity);
             }
@@ -49,6 +49,14 @@ namespace NAlex.Airlines.Planes
             }
             
             return preparedForFlight;
+        }
+
+        public override bool Flight()
+        {
+            bool res = base.Flight();
+            if (res)
+                Console.WriteLine("Cargo delivered.");
+            return res;
         }
     }
 }
