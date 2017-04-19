@@ -23,5 +23,6 @@ namespace NAlex.Airlines.Interfaces
 
         bool PrepareForFlight(IFlightPreparer preparer);
         bool Flight();
+        void WritePlaneInfo();
     }
 }

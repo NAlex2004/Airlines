@@ -56,7 +56,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Planes\plane.pln" />
+    <None Include="Planes\cargo-pass-plane2.pln" />
+    <None Include="Planes\cargo-plane1.pln" />
+    <None Include="Planes\cargo-plane2.pln" />
+    <None Include="Planes\passengers-plane1.pln" />
+    <None Include="Planes\passengers-plane2.pln" />
+    <None Include="Planes\plane.template" />
+    <None Include="Planes\cargo-pass-plane1.pln" />
+    <None Include="Planes\plane1.pln" />
+    <None Include="Planes\plane2.pln" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

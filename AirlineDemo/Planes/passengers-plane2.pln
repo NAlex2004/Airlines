@@ -1,0 +1,6 @@
+﻿Number=Passenger2
+Manufacture=Boeng
+FlightRange=400
+FuelTankSize=100
+#CargoCapacity=500
+PassengersCapacity=40

@@ -56,5 +56,11 @@ namespace NAlex.Airlines.Planes
                 Console.WriteLine("Passengers arrived.");
             return res;
         }
+
+        public override void WritePlaneInfo()
+        {
+            base.WritePlaneInfo();
+            Console.WriteLine("PassengersCapacity: {0}", PassengersCapacity);
+        }
     }
 }

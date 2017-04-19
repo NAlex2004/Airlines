@@ -1,0 +1,6 @@
+﻿Number=simple plane
+Manufacture=AirCraft
+FlightRange=400
+FuelTankSize=100
+#CargoCapacity=300
+#PassengersCapacity=50

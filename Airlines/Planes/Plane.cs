@@ -105,5 +105,11 @@ namespace NAlex.Airlines.Planes
             Console.WriteLine("Flight completed.");
             return true;
         }
+
+        public virtual void WritePlaneInfo()
+        {
+            Console.WriteLine("Manufacture: {0}\tFlightRange: {1}", Manufacture, FlightRange);
+            Console.WriteLine("Number: {0}\nFuelTankSize: {1}\nFuelConsumption: {2}", Number, FuelTankSize, FuelConsumption);
+        }
     }
 }

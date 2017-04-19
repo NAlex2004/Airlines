@@ -21,7 +21,7 @@ namespace AirlineDemo.Factories
         public ICollection<IPlane> CreateAirlinePlanes()
         {
             List<IPlane> planes = new List<IPlane>();            
-            var files = Directory.EnumerateFiles(filePattern);
+            var files = Directory.EnumerateFiles(airlineDirectory, filePattern);
             foreach (var file in files)
             {
                 string[] content = File.ReadAllLines(file);
@@ -41,7 +41,8 @@ namespace AirlineDemo.Factories
             var dict = config.Where(s => !string.IsNullOrEmpty(s))
                 .Select(s => s.Split('='))
                 .Where(s => s.Length > 1)
-                .ToDictionary(k => k[0].Trim(), v => v[1].Trim());
+                .Select(s => new string[2] { s[0].Trim(), s[1].Trim() });
+                //.ToDictionary(k => k[0].Trim(), v => v[1].Trim());
 
             string number = string.Empty;
             string manufacture = string.Empty;
@@ -50,27 +51,27 @@ namespace AirlineDemo.Factories
             int cargoCapacity = 0;
             int passengersCapacity = 0;
 
-            foreach (string s in dict.Keys)
+            foreach (string[] s in dict)
             {
-                switch (s.ToUpper())
+                switch (s[0].ToUpper())
                 {
                     case "NUMBER":
-                        number = dict[s];
+                        number = s[1];
                         break;
                     case "MANUFACTURE":
-                        manufacture = dict[s];
+                        manufacture = s[1];
                         break;
                     case "FLIGHTRANGE":
-                        Int32.TryParse(dict[s], out flightRange);
+                        Int32.TryParse(s[1], out flightRange);
                         break;
                     case "FUELTANKSIZE":
-                        double.TryParse(dict[s], out fuelTankSize);
+                        double.TryParse(s[1], out fuelTankSize);
                         break;
                     case "CARGOCAPACITY":
-                        Int32.TryParse(dict[s], out cargoCapacity);
+                        Int32.TryParse(s[1], out cargoCapacity);
                         break;
                     case "PASSENGERSCAPACITY":
-                        Int32.TryParse(dict[s], out passengersCapacity);
+                        Int32.TryParse(s[1], out passengersCapacity);
                         break;
                     default:
                         break;
@@ -85,15 +86,15 @@ namespace AirlineDemo.Factories
                         plane = new CargoPassengerPlane(flightRange, fuelTankSize, manufacture, cargoCapacity, passengersCapacity);
                     else
                         plane = new CargoPlane(flightRange, fuelTankSize, manufacture, cargoCapacity);
-                    return plane;
                 }
-
-                if (passengersCapacity > 0)
-                    plane = new PassengerPlane(flightRange, fuelTankSize, manufacture, passengersCapacity);
                 else
-                    plane = new Plane(flightRange, fuelTankSize, manufacture);
+                    if (passengersCapacity > 0)
+                        plane = new PassengerPlane(flightRange, fuelTankSize, manufacture, passengersCapacity);
+                    else
+                        plane = new Plane(flightRange, fuelTankSize, manufacture);
+                plane.Number = number;
             }
-
+            
             return plane;
         }
     }

@@ -57,5 +57,11 @@ namespace NAlex.Airlines.Planes
                 Console.WriteLine("Cargo delivered.");
             return res;
         }
+
+        public override void WritePlaneInfo()
+        {
+            base.WritePlaneInfo();
+            Console.WriteLine("CargoCapacity: {0}", CargoCapacity);
+        }
     }
 }
