@@ -61,7 +61,7 @@ namespace NAlex.Airlines.Planes
             }
         }
 
-        public Plane(int flightRange, int fuelTankSize, string manufacture)
+        public Plane(int flightRange, double fuelTankSize, string manufacture)
         {
             FlightRange = flightRange;
             FuelTankSize = fuelTankSize;

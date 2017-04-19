@@ -5,6 +5,8 @@ using System.Text;
 using NAlex.Airlines.Planes;
 using NAlex.Airlines.Interfaces;
 using NAlex.Airlines.Flights;
+using System.Configuration;
+using System.IO;
 
 namespace AirlineDemo
 {
@@ -12,6 +14,12 @@ namespace AirlineDemo
     {
         static void Main(string[] args)
         {
+            
+            //string dir = ConfigurationManager.AppSettings["AirlineDirectory"];
+            //DirectoryInfo dirInfo = new DirectoryInfo(dir);
+            //Console.WriteLine(dirInfo.FullName);
+            //dirInfo.EnumerateFiles(ConfigurationManager.AppSettings["PlanePattern"]).ToList().ForEach(x => Console.WriteLine(x.Name));
+
             List<IPlane> planes = new List<IPlane>()
             {
                 new Plane(1000, 100, "Boeng")

@@ -30,7 +30,7 @@ namespace NAlex.Airlines.Planes
             }
         }
 
-        public CargoPlane(int flightRange, int fuelTankSize, string manufacture, int cargoCapacity)
+        public CargoPlane(int flightRange, double fuelTankSize, string manufacture, int cargoCapacity)
             : base(flightRange, fuelTankSize, manufacture)
         {
             CargoCapacity = cargoCapacity;
