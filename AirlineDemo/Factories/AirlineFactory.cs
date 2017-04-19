@@ -20,17 +20,24 @@ namespace AirlineDemo.Factories
 
         public ICollection<IPlane> CreateAirlinePlanes()
         {
-            List<IPlane> planes = new List<IPlane>();            
-            var files = Directory.EnumerateFiles(airlineDirectory, filePattern);
-            foreach (var file in files)
+            List<IPlane> planes = new List<IPlane>();
+            try
             {
-                string[] content = File.ReadAllLines(file);
-                if (content.Length > 0)
+                var files = Directory.EnumerateFiles(airlineDirectory, filePattern);
+                foreach (var file in files)
                 {
-                    IPlane plane = CreatePlane(content);
-                    if (plane != null)
-                        planes.Add(plane);
+                    string[] content = File.ReadAllLines(file);
+                    if (content.Length > 0)
+                    {
+                        IPlane plane = CreatePlane(content);
+                        if (plane != null)
+                            planes.Add(plane);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
             return planes;
         }

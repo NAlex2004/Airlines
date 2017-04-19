@@ -41,13 +41,17 @@ namespace AirlineDemo
             }
         }
 
-        static void Main(string[] args)
+        static IAirline CreateAirline()
         {
-
             string dir = ConfigurationManager.AppSettings["AirlineDirectory"];
             string pattern = ConfigurationManager.AppSettings["PlanePattern"];
 
-            IAirline airline = new Airline(new AirlineFactory(dir, pattern));
+            return new Airline(new AirlineFactory(dir, pattern));
+        }
+
+        static void Main(string[] args)
+        {
+            IAirline airline = CreateAirline();
 
             WriteAirlineSkills(airline);
 
