@@ -95,12 +95,12 @@ namespace NAlex.Airlines.Planes
 
             preparedForFlight = false;
             //---------
-            double maximumRange = FuelCount * 100 / FuelConsumption;
-            if (maximumRange < missionFlightRange)
-            {
-                Console.WriteLine("Not enough fuel.");
-                return false;
-            }
+            //double maximumRange = FuelCount * 100 / FuelConsumption;
+            //if (maximumRange < missionFlightRange)
+            //{
+            //    Console.WriteLine("Not enough fuel.");
+            //    return false;
+            //}
             //----------
             Console.WriteLine("Flight completed.");
             return true;

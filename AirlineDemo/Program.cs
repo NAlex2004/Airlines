@@ -72,6 +72,11 @@ namespace AirlineDemo
             {
                 plane.WritePlaneInfo();
                 Console.WriteLine();
+                if (plane.PrepareForFlight(preparer))
+                {
+                    Console.WriteLine("Flight begins..");
+                    plane.Flight();
+                }
             }
         }
 
