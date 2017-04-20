@@ -1,7 +1,7 @@
 ﻿# extension must be .pln
 
 Number=q23rr
-Manufacture=boeng
+Manufacture=boeing
 FlightRange=1000
 FuelTankSize=200
 CargoCapacity=300
