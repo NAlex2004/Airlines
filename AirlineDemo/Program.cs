@@ -16,13 +16,13 @@ namespace AirlineDemo
     {
         static void WriteAirlineSkills(IAirline airline)
         {
-            Console.WriteLine("\tAirline capacities:");
+            Console.WriteLine("\n\tAirline capacities:");
             Console.WriteLine("\nTotal cargo: {0}\nTotal passengers: {1}\n\n", airline.TotalCargoCapacity, airline.TotalPassengersCapacity);
         }
 
         static void WritePlanes(IAirline airline)
         {
-            Console.WriteLine("\tAirline planes:\n");
+            Console.WriteLine("\n\tAirline planes:\n");
             foreach (var plane in airline.Planes)
             {
                 plane.WritePlaneInfo();
@@ -41,6 +41,16 @@ namespace AirlineDemo
             }
         }
 
+        static void WritePassengersPlanes(IAirline airline)
+        {
+            Console.WriteLine("\n\tPassengers planes:\n");
+            foreach (var plane in airline.PassengersPlanes())
+            {
+                plane.WritePlaneInfo();
+                Console.WriteLine();
+            }
+        }
+
         static IAirline CreateAirline()
         {
             string dir = ConfigurationManager.AppSettings["AirlineDirectory"];
@@ -49,16 +59,42 @@ namespace AirlineDemo
             return new Airline(new AirlineFactory(dir, pattern));
         }
 
+        static void PlanesCanFly(IAirline airline, FlightParams flightParams)
+        {
+            IFlightPreparer preparer = new FlightDirector(flightParams);
+            Console.WriteLine("\n\tFlight parameters:\n");
+            Console.WriteLine("Flight range: {0}", flightParams.FlightRange);
+            Console.WriteLine("Passengers count: {0}", flightParams.PassgengersCount);
+            Console.WriteLine("Cargo weight: {0}", flightParams.CargoWeight);
+            Console.WriteLine("\n\tPlanes can make this flight:\n");
+            var canFlyPlanes = airline.Planes.Where(p => preparer.CanFly(p));
+            foreach (var plane in canFlyPlanes)
+            {
+                plane.WritePlaneInfo();
+                Console.WriteLine();
+            }
+        }
+
+        static void WriteFlightDemo(IAirline airline)
+        {
+            FlightParams flightParams;
+            flightParams.FlightRange = 750;
+            flightParams.PassgengersCount = 40;
+            flightParams.CargoWeight = 300;
+            PlanesCanFly(airline, flightParams);
+        }
+
         static void Main(string[] args)
         {
             IAirline airline = CreateAirline();
 
             WriteAirlineSkills(airline);
-
             WritePlanes(airline);
-
+            WritePassengersPlanes(airline);
             WritePlanesByFuelConsumption(airline, 30, 50);
+            WriteFlightDemo(airline);
 
+            Console.Write("Any key to exit.");
             Console.ReadKey();
         }
     }

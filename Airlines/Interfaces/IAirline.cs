@@ -12,7 +12,7 @@ namespace NAlex.Airlines.Interfaces
         IEnumerable<IPlane> Planes { get; }
 
         IEnumerable<IPlane> FindByFuelConsumption(double minValue, double maxValue);
-        IEnumerable<IPlane> CanCarryCargo();
-        IEnumerable<IPlane> CanCarryPassengers();
+        IEnumerable<IPlane> CargoPlanes();
+        IEnumerable<IPlane> PassengersPlanes();
     }
 }

@@ -49,12 +49,12 @@ namespace NAlex.Airlines.Collections
             return planes.Where(p => p.FuelConsumption >= minValue && p.FuelConsumption <= maxValue);
         }
 
-        public IEnumerable<IPlane> CanCarryCargo()
+        public IEnumerable<IPlane> CargoPlanes()
         {
             return planes.OfType<ICargoable>().Cast<IPlane>();
         }
 
-        public IEnumerable<IPlane> CanCarryPassengers()
+        public IEnumerable<IPlane> PassengersPlanes()
         {
             return planes.OfType<IPassengers>().Cast<IPlane>();
         }
