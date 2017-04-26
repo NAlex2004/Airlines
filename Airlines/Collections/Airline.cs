@@ -46,17 +46,17 @@ namespace NAlex.Airlines.Collections
 
         public IEnumerable<IPlane> FindByFuelConsumption(double minValue, double maxValue)
         {
-            return planes.Where(p => p.FuelConsumption >= minValue && p.FuelConsumption <= maxValue);
+            return planes.Where(p => p.FuelConsumption >= minValue && p.FuelConsumption <= maxValue).OrderBy(p => p.FlightRange);
         }
 
         public IEnumerable<IPlane> CargoPlanes()
         {
-            return planes.OfType<ICargoable>().Cast<IPlane>();
+            return planes.OfType<ICargoable>().Cast<IPlane>().OrderBy(p => p.FlightRange);
         }
 
         public IEnumerable<IPlane> PassengersPlanes()
         {
-            return planes.OfType<IPassengers>().Cast<IPlane>();
+            return planes.OfType<IPassengers>().Cast<IPlane>().OrderBy(p => p.FlightRange);
         }
     }
 }
