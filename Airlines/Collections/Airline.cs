@@ -10,7 +10,7 @@ namespace NAlex.Airlines.Collections
 {
     public class Airline: IAirline
     {
-        private ICollection<IPlane> planes;
+        protected ICollection<IPlane> planes;
 
         public Airline(IAirlineFactory factory)
         {
