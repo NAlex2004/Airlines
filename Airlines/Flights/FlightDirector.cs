@@ -5,14 +5,14 @@ namespace NAlex.Airlines.Flights
 {
     public class FlightDirector: IFlightPreparer
     {
-        private FlightParams flightParams;
+        protected FlightParams flightParams;
 
         public FlightDirector(FlightParams flightParams)
         {
             this.flightParams = flightParams;           
         }
 
-        public bool CanFly(IPlane plane)
+        public virtual bool CanFly(IPlane plane)
         {
             bool result = flightParams.FlightRange <= plane.FlightRange;
 
@@ -31,23 +31,23 @@ namespace NAlex.Airlines.Flights
             return result;
         }
 
-        public double GetFuel(IPlane plane)
+        public virtual double GetFuel(IPlane plane)
         {
             return plane.FuelTankSize;
         }
 
-        public int GetCargo()
+        public virtual int GetCargo()
         {
             return flightParams.CargoWeight;
         }
 
-        public int GetPassengers()
+        public virtual int GetPassengers()
         {
             return flightParams.PassgengersCount;
         }
 
 
-        public int GetFlightRange()
+        public virtual int GetFlightRange()
         {
             return flightParams.FlightRange;
         }
