@@ -50,18 +50,21 @@ namespace NAlex.Airlines.Planes
             return preparedForFlight;
         }
 
-        public override bool Flight()
+		public override bool Flight(out string flightMessage)
         {
-            bool res = base.Flight();
-            if (res)
-                Console.WriteLine("Cargo delivered.");
+			bool res = base.Flight(out flightMessage);
+			if (res)
+				flightMessage += Environment.NewLine + "Cargo delivered.";
+                //Console.WriteLine("Cargo delivered.");
             return res;
         }
 
-        public override void WritePlaneInfo()
-        {
-            base.WritePlaneInfo();
-            Console.WriteLine("CargoCapacity: {0}", CargoCapacity);
-        }
+		public override string ToString ()
+		{			
+			return base.ToString ()
+				+ string.Format ("CargoCapacity: {0}", CargoCapacity)
+				+ Environment.NewLine;			
+		}
+			       
     }
 }

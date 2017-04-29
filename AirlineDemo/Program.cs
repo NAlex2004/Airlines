@@ -25,8 +25,7 @@ namespace AirlineDemo
             Console.WriteLine("\n\tAirline planes:\n");
             foreach (var plane in airline.Planes)
             {
-                plane.WritePlaneInfo();
-                Console.WriteLine();
+				Console.WriteLine (plane.ToString ());
             }
         }
 
@@ -36,8 +35,7 @@ namespace AirlineDemo
             Console.WriteLine("\tPlanes with fuel consumption in [{0}, {1}]:\n", minValue, maxValue);
             foreach (var plane in airline.FindByFuelConsumption(minValue, maxValue))
             {
-                plane.WritePlaneInfo();
-                Console.WriteLine();
+				Console.WriteLine (plane.ToString ());
             }
         }
 
@@ -46,8 +44,7 @@ namespace AirlineDemo
             Console.WriteLine("\n\tPassengers planes:\n");
             foreach (var plane in airline.PassengersPlanes())
             {
-                plane.WritePlaneInfo();
-                Console.WriteLine();
+				Console.WriteLine (plane.ToString ());
             }
         }
 
@@ -70,12 +67,13 @@ namespace AirlineDemo
             var canFlyPlanes = airline.Planes.Where(p => preparer.CanFly(p));
             foreach (var plane in canFlyPlanes)
             {
-                plane.WritePlaneInfo();
-                Console.WriteLine();
+				Console.WriteLine (plane.ToString ());
                 if (plane.PrepareForFlight(preparer))
                 {
                     Console.WriteLine("Flight begins..");
-                    plane.Flight();
+					string flightMessage;
+					plane.Flight(out flightMessage);
+					Console.WriteLine (flightMessage);
                 }
             }
         }
@@ -94,7 +92,7 @@ namespace AirlineDemo
             IAirline airline = CreateAirline();
 
             WriteAirlineSkills(airline);
-            WritePlanes(airline);
+            WritePlanes(airline);		
             WritePassengersPlanes(airline);
             WritePlanesByFuelConsumption(airline, 30, 50);
             WriteFlightDemo(airline);

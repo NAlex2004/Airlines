@@ -85,11 +85,11 @@ namespace NAlex.Airlines.Planes
             return preparedForFlight;
         }
 
-        public virtual bool Flight()
+		public virtual bool Flight(out string flightMessage)
         {
             if (!preparedForFlight)
             {
-                Console.WriteLine("This plane is not prepared for flight!");
+				flightMessage = "This plane is not prepared for flight!";
                 return false;
             }
 
@@ -102,14 +102,19 @@ namespace NAlex.Airlines.Planes
             //    return false;
             //}
             //----------
-            Console.WriteLine("Flight completed.");
+            //Console.WriteLine("Flight completed.");
+			flightMessage = "Flight completed";
             return true;
         }
 
-        public virtual void WritePlaneInfo()
-        {
-            Console.WriteLine("Manufacture: {0}\tFlightRange: {1}", Manufacture, FlightRange);
-            Console.WriteLine("Number: {0}\nFuelTankSize: {1}\nFuelConsumption: {2}", Number, FuelTankSize, FuelConsumption);
-        }
+		public override string ToString ()
+		{
+//			return string.Format ("[Plane: Id={0}, Number={1}, Manufacture={2}, FuelConsumption={3}, FlightRange={4}, FuelTankSize={5}, FuelCount={6}]", Id, Number, Manufacture, FuelConsumption, FlightRange, FuelTankSize, FuelCount);
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine(string.Format ("Manufacture: {0}\tFlightRange: {1}", Manufacture, FlightRange));
+			sb.AppendLine(string.Format("Number: {0}\nFuelTankSize: {1}\nFuelConsumption: {2}", Number, FuelTankSize, FuelConsumption));
+			return sb.ToString ();
+		}
+			
     }
 }

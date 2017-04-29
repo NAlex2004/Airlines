@@ -22,7 +22,6 @@ namespace NAlex.Airlines.Interfaces
         double FuelCount { get; }
 
         bool PrepareForFlight(IFlightPreparer preparer);
-        bool Flight();
-        void WritePlaneInfo();
+		bool Flight(out string flightMessage);
     }
 }
