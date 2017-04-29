@@ -3,7 +3,7 @@ using System;
 
 namespace NAlex.Airlines.Interfaces
 {
-	public interface IPlane//: IEquatable<IPlane>
+    public interface IPlane
     {
         int? Id { get; }
         string Number { get; set; }
@@ -22,7 +22,7 @@ namespace NAlex.Airlines.Interfaces
         double FuelTankSize { get; }
         double FuelCount { get; }
 
-		bool PrepareForFlight(IFlightPreparer preparer);
-		bool Flight(out string flightMessage);
+        bool PrepareForFlight(IFlightPreparer preparer);
+        bool Flight(out string flightMessage);
     }
 }

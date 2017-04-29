@@ -15,7 +15,7 @@ namespace NAlex.Airlines.Interfaces
         IEnumerable<IPlane> CargoPlanes();
         IEnumerable<IPlane> PassengersPlanes();
 
-		void Add(IPlane plane);
-		bool Remove (IPlane plane);
+        void Add(IPlane plane);
+        bool Remove (IPlane plane);
     }
 }

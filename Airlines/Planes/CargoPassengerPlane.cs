@@ -38,28 +38,28 @@ namespace NAlex.Airlines.Planes
 
         public override bool PrepareForFlight(IFlightPreparer preparer)
         {
-			if (base.PrepareForFlight (preparer))
-			{
-				PassengersOnBoard += preparer.GetPassengers ();
-			}
-				
+            if (base.PrepareForFlight (preparer))
+            {
+                PassengersOnBoard += preparer.GetPassengers ();
+            }
+                
             return preparedForFlight;
         }
 
-		public override bool Flight(out string flightMessage)
+        public override bool Flight(out string flightMessage)
         {
-			bool res = base.Flight(out flightMessage);
-			if (res)
-				flightMessage += Environment.NewLine + "Passengers arrived.";
+            bool res = base.Flight(out flightMessage);
+            if (res)
+                flightMessage += Environment.NewLine + "Passengers arrived.";
             return res;
         }
 
-		public override string ToString ()
-		{			
-			return base.ToString ()
-				+ string.Format ("PassengersCapacity: {0}", PassengersCapacity)
-				+ Environment.NewLine;			
-		}
-			
+        public override string ToString ()
+        {			
+            return base.ToString ()
+                + string.Format ("PassengersCapacity: {0}", PassengersCapacity)
+                + Environment.NewLine;			
+        }
+            
     }
 }

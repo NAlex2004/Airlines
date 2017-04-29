@@ -25,7 +25,7 @@ namespace AirlineDemo
             Console.WriteLine("\n\tAirline planes:\n");
             foreach (var plane in airline.Planes)
             {
-				Console.WriteLine (plane.ToString ());
+                Console.WriteLine (plane.ToString ());
             }
         }
 
@@ -35,7 +35,7 @@ namespace AirlineDemo
             Console.WriteLine("\tPlanes with fuel consumption in [{0}, {1}]:\n", minValue, maxValue);
             foreach (var plane in airline.FindByFuelConsumption(minValue, maxValue))
             {
-				Console.WriteLine (plane.ToString ());
+                Console.WriteLine (plane.ToString ());
             }
         }
 
@@ -44,7 +44,7 @@ namespace AirlineDemo
             Console.WriteLine("\n\tPassengers planes:\n");
             foreach (var plane in airline.PassengersPlanes())
             {
-				Console.WriteLine (plane.ToString ());
+                Console.WriteLine (plane.ToString ());
             }
         }
 
@@ -64,25 +64,25 @@ namespace AirlineDemo
             Console.WriteLine("Passengers count: {0}", flightParams.PassgengersCount);
             Console.WriteLine("Cargo weight: {0}", flightParams.CargoWeight);
             Console.WriteLine("\n\tPlanes can make this flight:\n");
-			var canFlyPlanes = airline.Planes;//.Where(p => preparer.CanFly(p));
-			Console.WriteLine ("-------------------------------");
+            var canFlyPlanes = airline.Planes;//.Where(p => preparer.CanFly(p));
+            Console.WriteLine ("-------------------------------");
             foreach (var plane in canFlyPlanes)
             {
-				Console.WriteLine (plane.ToString ());
-				if (plane.PrepareForFlight (preparer))
-				{
-					Console.WriteLine ("Flight begins..");
-					string flightMessage;
-					plane.Flight (out flightMessage);
-					Console.WriteLine (flightMessage);
-					Console.WriteLine ();
-				}
-				else
-				{
-					Console.WriteLine (preparer.LastResult);
-					Console.WriteLine ();
-				}
-				Console.WriteLine ("-------------------------------");
+                Console.WriteLine (plane.ToString ());
+                if (plane.PrepareForFlight (preparer))
+                {
+                    Console.WriteLine ("Flight begins..");
+                    string flightMessage;
+                    plane.Flight (out flightMessage);
+                    Console.WriteLine (flightMessage);
+                    Console.WriteLine ();
+                }
+                else
+                {
+                    Console.WriteLine (preparer.LastResult);
+                    Console.WriteLine ();
+                }
+                Console.WriteLine ("-------------------------------");
             }
         }
 

@@ -81,27 +81,27 @@ namespace NAlex.Airlines.Planes
             return preparedForFlight;
         }
 
-		public virtual bool Flight(out string flightMessage)
+        public virtual bool Flight(out string flightMessage)
         {
             if (!preparedForFlight)
             {
-				flightMessage = "This plane is not prepared for flight!";
+                flightMessage = "This plane is not prepared for flight!";
                 return false;
             }
 
             preparedForFlight = false;
 
-			flightMessage = "Flight completed";
+            flightMessage = "Flight completed";
             return true;
         }
 
-		public override string ToString ()
-		{
-			StringBuilder sb = new StringBuilder();
-			sb.AppendLine(string.Format ("Manufacture: {0}\tFlightRange: {1}", Manufacture, FlightRange));
-			sb.AppendLine(string.Format("Number: {0}\nFuelTankSize: {1}\nFuelConsumption: {2}", Number, FuelTankSize, FuelConsumption));
-			return sb.ToString ();
-		}
-			
+        public override string ToString ()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(string.Format ("Manufacture: {0}\tFlightRange: {1}", Manufacture, FlightRange));
+            sb.AppendLine(string.Format("Number: {0}\nFuelTankSize: {1}\nFuelConsumption: {2}", Number, FuelTankSize, FuelConsumption));
+            return sb.ToString ();
+        }
+            
     }
 }

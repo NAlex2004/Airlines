@@ -38,28 +38,28 @@ namespace NAlex.Airlines.Planes
 
         public override bool PrepareForFlight(IFlightPreparer preparer)
         {
-			if (base.PrepareForFlight (preparer))
-			{
-				CargoLoad += preparer.GetCargo ();
-			}
-				
+            if (base.PrepareForFlight (preparer))
+            {
+                CargoLoad += preparer.GetCargo ();
+            }
+                
             return preparedForFlight;
         }
 
-		public override bool Flight(out string flightMessage)
+        public override bool Flight(out string flightMessage)
         {
-			bool res = base.Flight(out flightMessage);
-			if (res)
-				flightMessage += Environment.NewLine + "Cargo delivered.";
+            bool res = base.Flight(out flightMessage);
+            if (res)
+                flightMessage += Environment.NewLine + "Cargo delivered.";
             return res;
         }
 
-		public override string ToString ()
-		{			
-			return base.ToString ()
-				+ string.Format ("CargoCapacity: {0}", CargoCapacity)
-				+ Environment.NewLine;			
-		}
-			       
+        public override string ToString ()
+        {			
+            return base.ToString ()
+                + string.Format ("CargoCapacity: {0}", CargoCapacity)
+                + Environment.NewLine;			
+        }
+                   
     }
 }
