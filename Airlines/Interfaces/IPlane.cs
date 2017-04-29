@@ -1,8 +1,9 @@
 ﻿using NAlex.Airlines.Flights;
+using System;
 
 namespace NAlex.Airlines.Interfaces
 {
-    public interface IPlane
+	public interface IPlane//: IEquatable<IPlane>
     {
         int? Id { get; }
         string Number { get; set; }
@@ -21,7 +22,7 @@ namespace NAlex.Airlines.Interfaces
         double FuelTankSize { get; }
         double FuelCount { get; }
 
-        bool PrepareForFlight(IFlightPreparer preparer);
+		bool PrepareForFlight(IFlightPreparer preparer);
 		bool Flight(out string flightMessage);
     }
 }

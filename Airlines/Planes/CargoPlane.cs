@@ -38,15 +38,11 @@ namespace NAlex.Airlines.Planes
 
         public override bool PrepareForFlight(IFlightPreparer preparer)
         {
-            base.PrepareForFlight(preparer);
-
-            int cargo = preparer.GetCargo() + CargoLoad;
-            if (cargo > CargoCapacity)
-            {
-                preparedForFlight = false;
-                Console.WriteLine("Plane has {0} kg cargo and cannot carry more than {1} kg", CargoLoad, CargoCapacity);
-            }
-
+			if (base.PrepareForFlight (preparer))
+			{
+				CargoLoad += preparer.GetCargo ();
+			}
+				
             return preparedForFlight;
         }
 
@@ -55,7 +51,6 @@ namespace NAlex.Airlines.Planes
 			bool res = base.Flight(out flightMessage);
 			if (res)
 				flightMessage += Environment.NewLine + "Cargo delivered.";
-                //Console.WriteLine("Cargo delivered.");
             return res;
         }
 

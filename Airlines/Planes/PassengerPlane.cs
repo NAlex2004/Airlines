@@ -38,13 +38,10 @@ namespace NAlex.Airlines.Planes
 
         public override bool PrepareForFlight(IFlightPreparer preparer)
         {
-            base.PrepareForFlight(preparer);
-            int passengers = preparer.GetPassengers() + PassengersOnBoard;
-            if (passengers > PassengersCapacity)
-            {
-                preparedForFlight = false;
-                Console.WriteLine("Plane has {0} passengers and cannot carry more than {1} passengers", PassengersOnBoard, PassengersCapacity);
-            }
+			if (base.PrepareForFlight (preparer))
+			{
+				PassengersOnBoard += preparer.GetPassengers ();
+			}
 
             return preparedForFlight;
         }
@@ -54,7 +51,6 @@ namespace NAlex.Airlines.Planes
 			bool res = base.Flight(out flightMessage);
 			if (res)
 				flightMessage += Environment.NewLine + "Passengers arrived.";
-                //Console.WriteLine("Passengers arrived.");
             return res;
         }
 

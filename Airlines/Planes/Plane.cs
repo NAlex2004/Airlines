@@ -77,11 +77,7 @@ namespace NAlex.Airlines.Planes
                 FuelCount = preparer.GetFuel(this);
                 missionFlightRange = preparer.GetFlightRange();
             }
-            else
-            {
-                if (preparer.GetFlightRange() > FlightRange)
-                    Console.WriteLine("Maximum flight range is {0} km.", FlightRange);
-            }
+
             return preparedForFlight;
         }
 
@@ -94,22 +90,13 @@ namespace NAlex.Airlines.Planes
             }
 
             preparedForFlight = false;
-            //---------
-            //double maximumRange = FuelCount * 100 / FuelConsumption;
-            //if (maximumRange < missionFlightRange)
-            //{
-            //    Console.WriteLine("Not enough fuel.");
-            //    return false;
-            //}
-            //----------
-            //Console.WriteLine("Flight completed.");
+
 			flightMessage = "Flight completed";
             return true;
         }
 
 		public override string ToString ()
 		{
-//			return string.Format ("[Plane: Id={0}, Number={1}, Manufacture={2}, FuelConsumption={3}, FlightRange={4}, FuelTankSize={5}, FuelCount={6}]", Id, Number, Manufacture, FuelConsumption, FlightRange, FuelTankSize, FuelCount);
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine(string.Format ("Manufacture: {0}\tFlightRange: {1}", Manufacture, FlightRange));
 			sb.AppendLine(string.Format("Number: {0}\nFuelTankSize: {1}\nFuelConsumption: {2}", Number, FuelTankSize, FuelConsumption));
