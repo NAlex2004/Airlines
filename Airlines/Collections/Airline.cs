@@ -40,23 +40,34 @@ namespace NAlex.Airlines.Collections
         {
             get
             {
-                return planes.OrderBy(p => p.FlightRange);
+				return planes.OrderBy(p => p.FlightRange).ToArray ();
             }
         }
 
         public IEnumerable<IPlane> FindByFuelConsumption(double minValue, double maxValue)
         {
-            return planes.Where(p => p.FuelConsumption >= minValue && p.FuelConsumption <= maxValue).OrderBy(p => p.FlightRange);
+            return planes.Where(p => p.FuelConsumption >= minValue && p.FuelConsumption <= maxValue)
+				.OrderBy(p => p.FlightRange).ToArray ();
         }
 
         public IEnumerable<IPlane> CargoPlanes()
         {
-            return planes.OfType<ICargoable>().Cast<IPlane>().OrderBy(p => p.FlightRange);
+			return planes.OfType<ICargoable>().Cast<IPlane>().OrderBy(p => p.FlightRange).ToArray ();
         }
 
         public IEnumerable<IPlane> PassengersPlanes()
         {
-            return planes.OfType<IPassengers>().Cast<IPlane>().OrderBy(p => p.FlightRange);
+			return planes.OfType<IPassengers>().Cast<IPlane>().OrderBy(p => p.FlightRange).ToArray ();
         }
+
+		public void Add(IPlane plane)
+		{
+			planes.Add (plane);
+		}
+
+		public bool Remove (IPlane plane)
+		{
+			return planes.Remove (plane);
+		}
     }
 }
