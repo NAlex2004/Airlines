@@ -66,6 +66,9 @@
     <None Include="Planes\cargo-pass-plane1.pln" />
     <None Include="Planes\plane1.pln" />
     <None Include="Planes\plane2.pln" />
+    <None Include="bin\Debug\AirlineDemo.exe" />
+    <None Include="bin\Debug\AirlineDemo.exe.config" />
+    <None Include="bin\Debug\Airlines.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

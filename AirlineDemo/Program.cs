@@ -82,7 +82,7 @@ namespace AirlineDemo
 					Console.WriteLine (preparer.LastResult);
 					Console.WriteLine ();
 				}
-				Console.WriteLine ("------------------------------");
+				Console.WriteLine ("-------------------------------");
             }
         }
 
