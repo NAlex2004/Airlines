@@ -62,12 +62,13 @@ namespace NAlex.Airlines.Collections
 
         public void Add(IPlane plane)
         {
-            planes.Add (plane);
+            if (plane != null)
+                planes.Add (plane);
         }
 
         public bool Remove (IPlane plane)
         {
-            return planes.Remove (plane);
+            return plane != null && planes.Remove (plane);
         }
     }
 }

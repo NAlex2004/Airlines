@@ -58,7 +58,7 @@ namespace NAlex.Airlines.Planes
         {			
             return base.ToString ()
                 + string.Format ("CargoCapacity: {0}", CargoCapacity)
-                + Environment.NewLine;			
+                   + Environment.NewLine;
         }
                    
     }
